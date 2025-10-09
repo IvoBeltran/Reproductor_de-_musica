@@ -15,7 +15,7 @@
     background: linear-gradient(#AD9B8D, #09080E);
     margin: 0 auto;
     border-radius: 30px;
-    padding: 80px 40px 40px 40 px;
+    padding: 80px 40px 40px 40px;
 }
 
 .app .top-bar{
@@ -48,9 +48,17 @@
     margin-top: 40px;
 }
 
+.app .cont-foto img{
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+}
+
 .app .titulo-cancion{
     text-align: center;
-    padding: 40px;
+    padding: 40px 0 0 0;
     font-weight: 400;
     color: #fff;
     font-size: 30px;
@@ -83,7 +91,7 @@
 /* Línea que ya ha sido “reproducida” */
 .progress-bar::-webkit-slider-runnable-track {
   height: 4px;
-  background: linear-gradient(to right, #c7d24b var(--value, 25%), #333 0%);
+  background: linear-gradient(to right, #c4da47 var(--value, 25%), #333 0%);
 }
 
 /* Bolita del slider */
@@ -96,4 +104,45 @@
   border-radius: 50%;
   cursor: pointer;
   margin-top: -6px; 
+}
+
+.app .minutos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.app .minutos p{
+    color: #fff;
+    font-size: 14px;
+}
+
+.app .botones{
+    display: flex;
+    justify-content: space-between;
+}
+
+.app .botones .btn1{
+    border: none;
+    font-size: 25px;
+    background: transparent;
+    color: #fff;
+}
+
+.app .botones .btn2{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #1c1b29;
+    color: #fff;
+    font-size: 25px;
+    border: none;
+}
+
+.app .botones .btn3{
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    border: none;
+    background: #c4da47;
+    font-size: 35px;
 }
