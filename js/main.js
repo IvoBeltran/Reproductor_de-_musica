@@ -14,6 +14,7 @@ const fin = document.getElementById("fin");
 const btnList = document.querySelector('#btn-lista');
 const contenedorCanciones = document.getElementById("contenedor-canciones");
 const btnRegreso = document.getElementById("btn-regreso");
+let isPlaying = true;
 
 
 
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             canciones = data
 
             mostraCanciones(indiceActual)
-            
+
 
         })
 
@@ -55,3 +56,33 @@ function mostraCanciones(indice) {
     // Agregamos el nombre del artista seleccionado de la cación en el h3 del artista 
     artista.textContent = cancion.artista
 }
+
+// función para avanzar en la lista de canciones 
+btnSiguiente.addEventListener("click", () => {
+    if (aleatoria) {
+        // Multiplicar por la longitud de la lista para obtener un rango de 0 hasta (longitud del arreglo)
+        // Math.floor() redondea hacia abajo para obtener un índice válido
+        const indiceAleatorio = Math.floor(Math.random() * (canciones.length));
+        indiceActual = indiceAleatorio;
+    } else {
+        // Esto lo ponemos por si en indice llega al ultimo retorne al primero
+        if (indiceActual === canciones.length - 1) [
+            indiceActual = 0
+        ]
+        else {
+            indiceActual++
+        }
+    }
+    // Retornamos el valor de la funcion inical
+    mostraCanciones(indiceActual);
+    // REPRODUCIMOS LA CANCIÓN DESPUES DE ACTUALIZAR EL ÍNDICE O SI NO SE REPRODUCE LA CANCIÓN ANTERIOR EN EL ARREGLO AL CAMBIAR AL BOTÓN SEGUIENTE
+    const cancion = canciones[indiceActual]
+    // CAMBIAMOS LA CANCIÓN
+    audio.setAttribute('src', cancion.cancion);
+
+    audio.play()
+
+    btnPlayPause.innerHTML = '<i class="bi bi-pause-fill"></i>'
+    // MANTENEMOS EL BOOLEANO EN TRUE PARA QUE NO IMPORTE SI LA CANCIÓN ESTÁ PAUSADA O NO, SE REPRODUZCA SIEMPRE LA SIGUIENTE AL PRESIONAR EL BOTÓN DE NEXT
+    isPlaying = true
+})
