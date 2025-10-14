@@ -185,6 +185,16 @@ barraProgress.addEventListener('input', () => {
     audio.currentTime = nuevoTiempo;
 })
 
+// se crea evento click en el boton de la lista para visualizar y ocultar la lista de canciones
+btnList.addEventListener('click', () => {
+    const containerList = document.querySelector('.cont-lista');
+    containerList.classList.add('lista-visible')
+});
+
+btnRegreso.addEventListener('click', ()=>{
+    const containerList = document.querySelector('.cont-lista');
+    containerList.classList.remove('lista-visible');
+})
 
 
 
