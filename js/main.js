@@ -197,7 +197,63 @@ btnRegreso.addEventListener('click', ()=>{
 })
 
 
+function mostrarCancionesEnLista() {
+    canciones.forEach((cancion, indice) => {
+        const fila = document.createElement('div');
+        fila.classList.add('fila');
 
+        const conImg = document.createElement('div');
+        conImg.classList.add('cont-img');
+
+        const img = document.createElement('img');
+        img.setAttribute('src', cancion.caratula);
+        img.setAttribute('alt', cancion.nombre);
+
+        const contInfo = document.createElement('div');
+        contInfo.classList.add('cont-info');
+
+        const h3 = document.createElement('h3');
+        h3.textContent = cancion.nombre;
+
+        const h4 = document.createElement('h4');
+        h4.textContent = cancion.artista;
+
+        const boton = document.createElement('button');
+        boton.innerHTML = '<i class="bi bi-play-fill"></i>'
+
+        boton.addEventListener('click', ()=>{
+            indiceActual= indice
+
+            mostraCanciones(indiceActual);
+
+            audio.setAttribute('src', cancion.cancion);
+
+            audio.play();
+
+            boton.innerHTML = '<i class="bi bi-pause-fill"></i>'
+
+            btnPlayPause.innerHTML = '<i class="bi bi-pause-fill"></i>'
+
+            isPlaying= true
+
+           const containerList = document.querySelector(".cont-lista");
+           containerList.classList.remove('lista-visible');
+
+        })
+
+
+        contenedorCanciones.appendChild(fila);
+
+        fila.appendChild(conImg);
+        fila.appendChild(contInfo);
+        fila.appendChild(boton);
+        conImg.appendChild(img);
+        contInfo.appendChild(h3);
+        contInfo.appendChild(h4);
+
+
+    })
+}
 
 
 // Se consulta al json para cargar las canciones al cargar la pagina
@@ -214,6 +270,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // INICIALIZAMOS EL SRC AQUÍ PARA PODER USARLO EN EL BOTÓN DE REPRODUCIR.
             audio.setAttribute('src', canciones[indiceActual].cancion)
+
+            mostrarCancionesEnLista()
 
             
 
