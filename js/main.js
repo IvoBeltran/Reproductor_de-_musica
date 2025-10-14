@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             canciones = data
 
+            mostraCanciones(indiceActual)
             
 
         })
