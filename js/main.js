@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             canciones = data
 
+            
+
         })
 
 
@@ -36,3 +38,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
+
+
+// Se realiza la funcion para mostrar la cancion 
+function mostraCanciones(indice) {
+    const cancion = canciones[indice];
+
+    // Agregamos la foto de la caratula de fondo del reproductor
+    fondo.style.setProperty('--fondo-caratula', url('${cancion.caratula}'));
+
+    // Se agrega la imagen de la caractula de la canción seleccionada en el objeto img
+    imgCaratula.setAttribute('src', cancion.caratula);
+    // Agregamos el nombre de la cación seleccionada al titulo del reproductor
+    titulo.textContent = cancion.nombre
+    // Agregamos el nombre del artista seleccionado de la cación en el h3 del artista 
+    artista.textContent = cancion.artista
+}
