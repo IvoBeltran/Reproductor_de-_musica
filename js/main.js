@@ -17,3 +17,22 @@ const btnRegreso = document.getElementById("btn-regreso");
 
 
 
+// Se consulta al json para cargar las canciones al cargar la pagina
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("canciones.json")
+
+        .then(response => response.json())
+
+        .then(data => {
+            canciones = data
+
+        })
+
+
+        .catch(error => {
+            console.error("Error al cargar el JSON:", error);
+
+        });
+
+})
+
